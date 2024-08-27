@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { isConfigured } from "react-native-reanimated";
 
@@ -10,22 +10,25 @@ const ResultItem = ({ result }) => {
       <Text style={styles.title}>{result.name}</Text>
 
       <View style={styles.info}>
-        <Text style={styles.info_text}>
-          {result.rating}
-          <FontAwesome name="star" size={16} color="black" />
-        </Text>
-
-        <Text style={styles.info_text}>
-          {result.review_count}
-          <FontAwesome name="comments" size={16} color="black" />
-        </Text>
+        <View style={styles.info}>
+          <Text style={styles.info_text}>{result.rating}</Text>
+          <FontAwesome name="star" style={styles.icon_star} />
+        </View>
+        <View style={styles.info}>
+          <Text style={styles.info_text}>{result.review_count}</Text>
+          <FontAwesome name="comments" style={styles.icon_comment} />
+        </View>
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    margin: 8,
+    marginHorizontal: 8,
+    padding: 8,
+    borderColor: "#afafaf",
+    borderWidth: 1,
+    borderRadius: 8,
   },
   title: {
     fontSize: 16,
@@ -40,9 +43,18 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    paddingRight: 8,
   },
   info_text: {
-    marginRight: 8,
+    marginRight: 2,
+  },
+  icon_star: {
+    size: 16,
+    color: "#FFC600",
+  },
+  icon_comment: {
+    size: 16,
+    color: "#666666",
   },
 });
 

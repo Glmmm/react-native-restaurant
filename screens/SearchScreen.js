@@ -4,7 +4,7 @@ import SearchBar from "./components/SearchBar";
 import useResults from "./hooks/useResults";
 import ResultList from "./components/ResultsList";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [searchInput, setSearchIput] = useState("");
   const [searchApi, restaurants, errorMessage] = useResults();
 
@@ -21,11 +21,7 @@ const SearchScreen = () => {
         onSearchChange={setSearchIput}
         onSearchSubmit={() => searchApi(searchInput)}
       ></SearchBar>
-      {errorMessage ? (
-        <Text>{errorMessage} </Text>
-      ) : (
-        <Text>Tem {restaurants.length} resultados</Text>
-      )}
+
       <ScrollView>
         <ResultList results={filterByPrice("$")} categoria="Ta duro dorme" />
         <ResultList results={filterByPrice("$$")} categoria="Salário caiu" />
@@ -38,6 +34,7 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 8,
   },
 });
 
