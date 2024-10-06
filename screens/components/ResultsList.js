@@ -10,6 +10,10 @@ import { withNavigation } from "react-navigation";
 import ResultItem from "./ResultItem";
 
 const ResultList = ({ categoria, results, navigation }) => {
+  if (!results.length) {
+    return null;
+  }
+
   return (
     <View>
       <Text style={styles.categoria}>{categoria}</Text>
@@ -20,7 +24,9 @@ const ResultList = ({ categoria, results, navigation }) => {
         keyExtractor={(result) => result.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate("Result")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Result", { id: item.id })}
+            >
               <ResultItem result={item} />
             </TouchableOpacity>
           );

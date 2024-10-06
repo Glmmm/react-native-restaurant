@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { isConfigured } from "react-native-reanimated";
 
 const ResultItem = ({ result }) => {
   return (
